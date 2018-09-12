@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="cpurender"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cpurender">
+				<Option output="/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug/cpurender/cpurender" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DPROJECT_SOURCE_DIR=&quot;/Users/markusmarkussen/Documents/Github/Parallelle-Oving1&quot;"/>
+					<Add directory="/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/src"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/9.1.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug/Makefile&quot;  VERBOSE=1 cpurender"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cpurender/fast">
+				<Option output="/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug/cpurender/cpurender" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DPROJECT_SOURCE_DIR=&quot;/Users/markusmarkussen/Documents/Github/Parallelle-Oving1&quot;"/>
+					<Add directory="/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/src"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/9.1.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug/Makefile&quot;  VERBOSE=1 cpurender/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/.gitignore">
+			<Option target="cpurender"/>
+		</Unit>
+		<Unit filename="/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/CMakeLists.txt">
+			<Option target="cpurender"/>
+		</Unit>
+		<Unit filename="/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/src/main.cpp">
+			<Option target="cpurender"/>
+		</Unit>
+		<Unit filename="/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/src/rasteriser.cpp">
+			<Option target="cpurender"/>
+		</Unit>
+		<Unit filename="/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/src/rasteriser.hpp">
+			<Option target="cpurender"/>
+		</Unit>
+		<Unit filename="/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/src/sse_test.cpp">
+			<Option target="cpurender"/>
+		</Unit>
+		<Unit filename="/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/src/sse_test.hpp">
+			<Option target="cpurender"/>
+		</Unit>
+		<Unit filename="/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/src/utilities/OBJLoader.cpp">
+			<Option target="cpurender"/>
+		</Unit>
+		<Unit filename="/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/src/utilities/OBJLoader.hpp">
+			<Option target="cpurender"/>
+		</Unit>
+		<Unit filename="/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/src/utilities/geom.cpp">
+			<Option target="cpurender"/>
+		</Unit>
+		<Unit filename="/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/src/utilities/geom.hpp">
+			<Option target="cpurender"/>
+		</Unit>
+		<Unit filename="/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/src/utilities/lodepng.cpp">
+			<Option target="cpurender"/>
+		</Unit>
+		<Unit filename="/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/src/utilities/lodepng.h">
+			<Option target="cpurender"/>
+		</Unit>
+		<Unit filename="/Users/markusmarkussen/Documents/Github/Parallelle-Oving1/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

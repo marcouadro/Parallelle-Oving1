@@ -199,7 +199,7 @@ float3 getTriangleBarycentricWeights( float4 const v0,
  * @param  w2 barycentric weight
  * @return    pixel depth (z)
  */
-float getTrianglePixelDepth( float4 const v0,
+inline float getTrianglePixelDepth( float4 const v0,
 							 float4 const v1,
 							 float4 const v2,
 							 float const w0,
@@ -229,6 +229,11 @@ void rasteriseTriangles( Mesh &mesh,
 {
 	// We rasterise one triangle at a time
 	unsigned int triangleCount = mesh.indexCount / 3;
+
+	//TODO: This is moved from inside the loop to the outside.
+	float3 *interpolatedNormal = new float3();
+	std::vector<unsigned char> pixelColour;
+
 	for(unsigned int triangleIndex = 0; triangleIndex < triangleCount; triangleIndex++) {
 		// '\r' returns to the beginning of the current line
 		std::cout << "Rasterising triangle " << (triangleIndex + 1) << "/" << triangleCount << "\r" << std::flush;
@@ -245,6 +250,12 @@ void rasteriseTriangles( Mesh &mesh,
 		float4 *vertex1 = new float4(transformedVertexBuffer.at(index1));
 		float4 *vertex2 = new float4(transformedVertexBuffer.at(index2));
 
+		//TODO: This is moved
+		// Read the normals belonging to each vertex
+		float4 *normal0 = new float4(transformedNormalBuffer.at(index0));
+		float4 *normal1 = new float4(transformedNormalBuffer.at(index1));
+		float4 *normal2 = new float4(transformedNormalBuffer.at(index2));
+
 		// These triangles are still in so-called "clipping space". We first convert them
 		// to screen pixel coordinates
 		*vertex0 = convertClippingSpace(*vertex0, width, height);
@@ -253,9 +264,13 @@ void rasteriseTriangles( Mesh &mesh,
 
 		// We iterate over each pixel on the screen
 		for(unsigned int y = 0; y < height; y++) {
-			for(unsigned int x = 0; x < width; x++) {
+			for(unsigned int x = 0; x < width; x+=4) {
 				//Coordinate of the current pixel in the framebuffer, remember RGBA color code
-				unsigned int pixelBaseCoordinate = 4 * (x + y * width);
+				//TODO: LOOP UNROLLING STARTS HERE
+				unsigned int pixelBaseCoordinate0 = 4 * (x + y * width);
+				unsigned int pixelBaseCoordinate1 = 4 * (x + y * width+1);
+				unsigned int pixelBaseCoordinate2 = 4 * (x + y * width+2);
+				unsigned int pixelBaseCoordinate3 = 4 * (x + y * width+3);
 
 				// Calculating the barycentric weights of the pixel in relation to the triangle
 				float weight0 = getTriangleBarycentricWeights(*vertex0, *vertex1, *vertex2, x, y).x;
@@ -265,22 +280,13 @@ void rasteriseTriangles( Mesh &mesh,
 				// Now we can determine the depth of our pixel
 				float pixelDepth = getTrianglePixelDepth(*vertex0, *vertex1, *vertex2, weight0, weight1, weight2);
 
-				// Read the normals belonging to each vertex
-				float4 *normal0 = new float4(transformedNormalBuffer.at(index0));
-				float4 *normal1 = new float4(transformedNormalBuffer.at(index1));
-				float4 *normal2 = new float4(transformedNormalBuffer.at(index2));
-
 				// But since a pixel can lie anywhere between the vertices, we compute an approximated normal
 				// at the pixel location by interpolating the ones from the vertices.
-				float3 *interpolatedNormal = new float3();
+
 				interpolatedNormal->x = interpolateNormals(*normal0, *normal1, *normal2, weight0, weight1, weight2).x;
 				interpolatedNormal->y = interpolateNormals(*normal0, *normal1, *normal2, weight0, weight1, weight2).y;
 				interpolatedNormal->z = interpolateNormals(*normal0, *normal1, *normal2, weight0, weight1, weight2).z;
 
-				// Cleanup
-				delete normal0;
-				delete normal1;
-				delete normal2;
 
 				// This process can slightly change the length, so we normalise it here to make sure the lighting calculations
 				// appear correct.
@@ -293,10 +299,8 @@ void rasteriseTriangles( Mesh &mesh,
 				interpolatedNormal->z /= normalLength;
 
 				// And we can now execute the fragment shader to compute this pixel's colour.
-				std::vector<unsigned char> pixelColour = runFragmentShader(*interpolatedNormal);
+				pixelColour = runFragmentShader(*interpolatedNormal);
 
-				// Cleanup
-				delete interpolatedNormal;
 
 				// Z-clipping discards pixels too close or too far from the camera
 				if(pixelDepth >= -1 && pixelDepth <= 1) {
@@ -308,19 +312,30 @@ void rasteriseTriangles( Mesh &mesh,
 							// save its depth to skip all next pixels underneath it
 							depthBuffer.at(y * width + x) = pixelDepth;
 							// Copy the calculated pixel colour into the frame buffer - RGBA
-							for (unsigned int i = 0; i < pixelColour.size(); i++) {
-									frameBuffer.at(pixelBaseCoordinate + i) = pixelColour.at(i);
+							for (unsigned int i = 0; i < pixelColour.size(); i+=4) {
+								//TODO: LOOP UNROLLING
+								frameBuffer.at(pixelBaseCoordinate0 + i) = pixelColour.at(i);
+								frameBuffer.at(pixelBaseCoordinate1 + i+1) = pixelColour.at(i+1);
+								frameBuffer.at(pixelBaseCoordinate2 + i+2) = pixelColour.at(i+2);
+								frameBuffer.at(pixelBaseCoordinate3 + i+3) = pixelColour.at(i+3);
 							}
 						}
 					}
 				}
 			}
 		}
+
+		// Cleanup
+		delete normal0;
+		delete normal1;
+		delete normal2;
 		// Cleanup
 		delete vertex0;
 		delete vertex1;
 		delete vertex2;
 	}
+	// Cleanup
+	delete interpolatedNormal;
 	// finish the progress output with a new line
 	std::cout << std::endl;
 }
