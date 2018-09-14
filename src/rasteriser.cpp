@@ -267,7 +267,7 @@ void rasteriseTriangles( Mesh &mesh,
 		vertexes[2] = convertClippingSpace(vertexes[2], width, height);
 
 		// We iterate over each pixel on the screen
-		for(unsigned int y = 0; y < height; y++) {
+		for(unsigned int y = 0; y < height; ++y) {
 			for(unsigned int x = 0; x < width; x+=4) {
 				//Coordinate of the current pixel in the framebuffer, remember RGBA color code
 				//TODO: LOOP UNROLLING
@@ -373,9 +373,9 @@ void rasterise(Mesh mesh, std::string outputImageFile, unsigned int width, unsig
 
 	// Initializing the framebuffer with RGBA (0,0,0,255), black, no
 	// transparency
-	for (unsigned int i = 0; i < 4; i++) {
-		for (unsigned int y = 0; y < height; y++) {
-			for(unsigned int x = 0; x < width; x++) {
+	for (unsigned int i = 0; i < 4; ++i) {
+		for (unsigned int y = 0; y < height; ++y) {
+			for(unsigned int x = 0; x < width; ++x) {
 				//TODO: BITSHIFT << 2 = * 4
 				frameBuffer.at((( x + y * width ) << 2) + i) = 0;
 				if ( i == 3 ) {
